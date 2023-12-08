@@ -1,0 +1,38 @@
+name: Add binaries to release
+run-name: Add binaries to release ${{ github.event.release.tag_name }}
+
+on:
+  release:
+    types:
+      - created
+
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  upload:
+    strategy:
+      matrix:
+        os: [windows, macos, ubuntu]
+    runs-on: ${{ matrix.os }}-latest
+    name: Upload ${{ matrix.os }} binaries to release ${{ github.event.release.tag_name }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+      - name: compile and upload
+        shell: bash
+        run: |
+          dart pub get
+          dart analyze
+          dart compile exe bin/gradle_wrapper.dart -o gw_dl.exe
+          chmod +x gw_dl.exe
+          export TARGET_GZ=${{ matrix.os }}_${{ github.event.release.tag_name }}.tar.gz
+          cd bin
+          tar -czvf $TARGET_GZ gw_dl.exe
+          gh release upload ${{ github.event.release.tag_name }} $TARGET_GZ
+
+permissions:
+  contents: write
