@@ -88,9 +88,13 @@ abstract class DlCommand extends BaseCommond {
     }
   }
 
+  Dio makeDio() {
+    return Dio();
+  }
+
   Future<String> _convertToGithubUrl(String url) async {
     final uri = Uri.parse(url);
-    final dio = Dio();
+    final dio = makeDio();
     try {
       final resp = await dio.headUri(uri,
           options: Options(
@@ -147,7 +151,7 @@ abstract class DlCommand extends BaseCommond {
 
     logger.log('Downloading $distUri to $zipPath');
 
-    final dio = Dio();
+    final dio = makeDio();
     try {
       if (!File(zipPath).existsSync()) {
         File(zipPath).parent.createSync(recursive: true);

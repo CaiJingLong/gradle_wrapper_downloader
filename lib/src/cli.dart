@@ -2,6 +2,7 @@ import 'package:args/command_runner.dart';
 
 import 'command/base.dart';
 import 'command/ghproxy.dart';
+import 'command/proxy.dart';
 
 Future<void> runCli(List<String> args) async {
   final CommandRunner<void> runner = CommandRunner<void>(
@@ -12,6 +13,7 @@ Future<void> runCli(List<String> args) async {
   void addCommand(BaseCommond command) => runner.addCommand(command);
 
   addCommand(GhproxyCommand());
+  addCommand(ProxyCommand());
 
   await runner.run(args);
 }
