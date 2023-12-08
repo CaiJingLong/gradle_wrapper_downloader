@@ -30,7 +30,6 @@ jobs:
           dart compile exe bin/gradle_wrapper.dart -o gw_dl.exe
           chmod +x gw_dl.exe
           export TARGET_GZ=${{ matrix.os }}_${{ github.event.release.tag_name }}.tar.gz
-          cd bin
           tar -czvf $TARGET_GZ gw_dl.exe
           gh release upload ${{ github.event.release.tag_name }} $TARGET_GZ
 
