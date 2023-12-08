@@ -1,5 +1,5 @@
 name: gradle_wrapper
-description: A sample command-line application with basic argument parsing.
+description: A cli for download gradle-wrapper with proxy.
 version: 0.1.0
 repository: https://github.com/my_org/my_repo
 

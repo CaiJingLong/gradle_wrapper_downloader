@@ -15,18 +15,34 @@
 ## 代理方案
 
 - [x] 使用[ghproxy][] 代理，这个代理是三方提供的，速度还可以，但是本人不保证它的永久可用，且不保证它的安全性，请根据日志路径自行校验 gradle zip 是否被篡改。
-- [] 使用环境变量 http_proxy 来指定代理，这种方式的下载速度取决于你的节点速度。
+- [ ] 使用环境变量 http_proxy 来指定代理，这种方式的下载速度取决于你的节点速度。
 
 ## 使用方法
 
 用 pub global 安装或直接从 release 中下载二进制文件。
 
 ```bash
-pub global activate gradle_wrapper
+dart pub global activate gradle_wrapper
+```
+
+运行方式：
+
+这里是否可以直接使用 gradle_wrapper 取决于你是否将 pub global 的 bin 目录加入到了 PATH 环境变量中。
+
+```bash
+gradle_wrapper -h
+
+# or
+
+dart pub global run gradle_wrapper:gradle_wrapper -h
 ```
 
 ```bash
+gradle_wrapper g -d <your project path>
 
+# or
+
+dart pub global run gradle_wrapper:gradle_wrapper g -d <your project path>
 ```
 
 ## 其他问题
