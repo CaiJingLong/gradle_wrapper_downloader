@@ -5,7 +5,6 @@ import 'package:args/args.dart';
 import 'package:args/command_runner.dart';
 import 'package:dio/dio.dart';
 import 'package:gradle_wrapper/gradle_wrapper.dart';
-import 'package:gradle_wrapper/src/util/file_utils.dart';
 import 'package:path/path.dart';
 import 'package:props/props.dart';
 
