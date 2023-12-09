@@ -8,6 +8,11 @@ REPO_URL="https://github.com/CaiJingLong/gradle_wrapper_downloader"
 OUTPUT_FILE="gradle_wrapper_downloader.tar.gz"
 EXE_NAME="gw_dl.exe"
 
+# if TARGET_NAME is empty
+if [ -z "$TARGET_NAME" ]; then
+  TARGET_NAME="gradle_wrapper"
+fi
+
 if [ "$os_type" == "Linux" ]; then
   OS="ubuntu"
   echo "Current OS is linux"
@@ -44,4 +49,12 @@ echo "Download success, you can use ./$EXE_NAME to use it."
 echo "Or"
 
 echo "You can move $EXE_NAME to /usr/local/bin to use it globally."
-echo "Use 'mv $EXE_NAME /usr/local/bin/gw_dl' to move it."
+echo "Use 'mv $EXE_NAME /usr/local/bin/$TARGET_NAME' to move it."
+
+# read input to move it to /usr/local/bin
+read -p "Do you want to move it to /usr/local/bin? (y/n)" input
+
+if [ "$input" == "y" ]; then
+  mv $EXE_NAME /usr/local/bin/$TARGET_NAME
+  echo "Moved to /usr/local/bin/$TARGET_NAME"
+fi
