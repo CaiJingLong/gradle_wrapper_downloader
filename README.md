@@ -14,8 +14,9 @@
 
 ## 代理方案
 
-- [x] 使用[ghproxy][] 代理，这个代理是三方提供的，速度还可以，但是本人不保证它的永久可用，且不保证它的安全性，请根据日志路径自行校验 gradle zip 是否被篡改。
+- [x] 使用 [ghproxy][] 代理，这个代理是三方提供的，速度还可以，但是本人不保证它的永久可用，且不保证它的安全性，请根据日志路径自行校验 gradle zip 是否被篡改。
 - [x] 使用环境变量 http_proxy 来指定代理，这种方式的下载速度取决于你的节点速度。
+- [x] 使用 [腾讯云镜像][tencent]，这个镜像是腾讯提供的，自行校验安全性。
 
 ## 使用方法
 
@@ -66,3 +67,4 @@ dart pub global run gradle_wrapper:gradle_wrapper p -d <your project path>
 - 请**不要**直接使用 flutter 项目根目录，而**要** android 目录，因为 iOS 会软链接所有 packages，导致找到很多不同的 `gradle-wrapper.properties` 文件，此工具会自动下载所有的。
 
 [ghproxy]: https://mirror.ghproxy.com/
+[tencent]: https://mirrors.cloud.tencent.com/gradle/

@@ -137,6 +137,7 @@ abstract class DlCommand extends BaseCommond {
     if (File(zipPath).existsSync()) {
       if (!force) {
         logger.log('The zip file $zipPath already exists.');
+        logger.log('Use --force to download it again.');
         return;
       } else {
         logger.log(
@@ -149,6 +150,7 @@ abstract class DlCommand extends BaseCommond {
     final githubUrl = await _convertToGithubUrl(url);
     final distUri = makeUri(githubUrl);
 
+    logger.log('Use the $distUri to download the wrapper.');
     logger.log('Downloading $distUri to $zipPath');
 
     final dio = makeDio();
