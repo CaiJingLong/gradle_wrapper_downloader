@@ -1,6 +1,6 @@
 name: gradle_wrapper
 description: A cli for download gradle-wrapper with proxy.
-version: 0.2.0
+version: 0.3.0
 repository: https://github.com/my_org/my_repo
 
 environment:
