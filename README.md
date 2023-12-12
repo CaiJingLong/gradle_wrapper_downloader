@@ -22,6 +22,8 @@
 
 ### 安装
 
+#### 使用 dart
+
 用 pub global 安装或直接从 release 中下载二进制文件。
 
 ```bash
@@ -29,6 +31,17 @@ dart pub global activate gradle_wrapper
 ```
 
 这里是否可以直接使用 gradle_wrapper 取决于你是否将 pub global 的 bin 目录加入到了 PATH 环境变量中。
+
+#### Release 下载
+
+从 release 中下载二进制文件，然后将其放入 PATH 环境变量中。
+
+```sh
+curl https://raw.githubusercontent.com/CaiJingLong/gradle_wrapper_downloader/main/tool/install-sh.sh | sh
+
+# 国内有的地方访问困难，也可以使用 ghproxy
+curl https://mirror.ghproxy.com/https://raw.githubusercontent.com/CaiJingLong/gradle_wrapper_downloader/main/tool/install-sh.sh | sh
+```
 
 ### 查看帮助
 
@@ -64,6 +77,7 @@ dart pub global run gradle_wrapper:gradle_wrapper p -d <your project path>
 
 ## 其他问题
 
+- 这是一个通用的 gradle 工具，不是仅适用于 flutter 项目，只要你使用 gradle wrapper 就可以用这东西。
 - 请**不要**直接使用 flutter 项目根目录，而**要** android 目录，因为 iOS 会软链接所有 packages，导致找到很多不同的 `gradle-wrapper.properties` 文件，此工具会自动下载所有的。
 
 [ghproxy]: https://mirror.ghproxy.com/
