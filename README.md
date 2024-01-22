@@ -55,7 +55,21 @@ gradle_wrapper -h
 dart pub global run gradle_wrapper:gradle_wrapper -h
 ```
 
+### 使用腾讯代理
+
+比较推荐这个方式，虽然腾讯肯定有大厂的傲慢，但是节点速度来说很优质
+
+```bash
+gradle_wrapper t -d <your project path>
+
+# or
+
+dart pub global run gradle_wrapper:gradle_wrapper t -d <your project path>
+```
+
 ### 用 ghproxy 下载
+
+三方镜像，基本上能代理各种各样的 github 资源，这里利用的是它代理 github release 的能力
 
 ```bash
 gradle_wrapper g -d <your project path>
@@ -65,7 +79,10 @@ gradle_wrapper g -d <your project path>
 dart pub global run gradle_wrapper:gradle_wrapper g -d <your project path>
 ```
 
+
 ### 使用自己的代理
+
+这个就是纯粹的 http 代理了，取决于你自己的节点速度
 
 ```bash
 export http_proxy=http://localhost:7890
