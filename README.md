@@ -3,8 +3,13 @@
 初衷，Gradle 不知道从什么时候开始，将 gradle wrapper 迁移到了 github 上，但是国内访问 github 速度很慢，所以我写了这个工具，通过代理帮你下载 gradle wrapper。
 
 如果你会自行配置代理且能找到正确的位置，那么你**不需要**这个工具。
+或者，你的项目使用的是你自己搭设站点镜像的 Gradle wrapper，那么你可以直接修改项目的 url。
+此项目适用于一些你无权修改 `gradle-wrapper.properties` 的项目，包括三方开源项目、公司项目等。
 
-此工具原理，通过搜索你项目中的 `gradle-wrapper.properties` 文件，找到 `distributionUrl`，然后下载对应的 gradle 版本到对应的目录内。
+此工具原理，通过递归搜索你项目中的 `gradle-wrapper.properties` 文件，找到 `distributionUrl` 属性，然后下载 gradle 版本到对应的目录内。
+
+这里的目录寻找逻辑是移植 gradle wrapper 官方寻找 Gradle Home 的逻辑，路径中那个乱码其实是 distributionUrl 属性对应的 md5 + base36。
+所以如果你直接修改 distributionUrl 后哪怕是原始文件完全一样也无法覆盖，所以只能用镜像的方式来做。
 
 ## 安全性问题
 
